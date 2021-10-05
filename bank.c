@@ -3,26 +3,14 @@
 #include <stdbool.h>
 #include <math.h>
 #include <conio.h>
+#include "banking.h"
 #define PIN 1234
 
-double balance, toDeposit, toWithdraw;
 
-double withdraw(double amount) {
-    balance = balance - amount;
-    return balance;
-}
-
-double deposit(double amount) {
-    balance = balance + amount;
-    return balance;
-}
-
-double checkBalance(double amount) {
-    printf("BALANCE: %.2lf\n", amount);
-}
 
 int main(){
     int choice, pin, got=0;
+    double balance, toDeposit, toWithdraw;
 
     printf("============= WELCOME TO BANCO TIMAJO =============\n\nPlease enter PIN: \n>> ");
     scanf("%d",&pin);
@@ -45,15 +33,17 @@ int main(){
 
         system("cls");
         
+        //withdraw
         if(choice == 1){
             printf("AMOUNT TO WITHDRAW:\n>> P ");
             scanf("%lf", &toWithdraw);
-            while(toWithdraw > balance){
+            while(toWithdraw > balance || toWithdraw == 0){
                 system("cls");
-                printf("INSUFFICIENT BALANCE. Please enter amount less than or equivalent to your balance.\n>> Amount to withdraw: \n>> P ");
+                printf("INVALID VALUE. Amount should not exceed your balance, and not zero.\n>> Amount to withdraw: \n>> P ");
                 scanf("%lf", &toWithdraw);
             }
-            withdraw(toWithdraw);
+
+            balance = withdraw(toWithdraw, balance);
 
             system("cls");
             printf("Processing your transaction.");
@@ -69,21 +59,22 @@ int main(){
             
             printf("***********ACCOUNT STATUS***********\n\tBALANCE: P %.2lf\n", balance);
         }
-
+        //deposit
         else if(choice == 2){
             printf("AMOUNT TO DEPOSIT\n>> P ");
             scanf("%lf", &toDeposit);
-            deposit(toDeposit);
+            balance = deposit(toDeposit, balance);
             printf("Processing your transaction.\n");
             system("cls");            
             printf("You have deposited an amount of P %.2lf in your account.\n\n", toDeposit);
             printf("***********ACCOUNT STATUS***********\n\tBALANCE: P %.2lf\n", balance);
         }
-
+        //check balance
         else if(choice == 3){
             system("cls");
             checkBalance(balance);
         }
+        
         else {
             system("cls");
             printf("\nInvalid Input. Please try again.\n"); 
@@ -94,7 +85,7 @@ int main(){
         printf("\t1. Withdraw\n\t2. Deposit\n\t3. Check balance\n\t4. Exit \n>>");
         scanf("%d", &choice);
     }
-    
+    system("cls");
     printf("\n============= Banking Made Easy at BANCO TIMAJO =============");
     printf("\nTHANK YOU FOR BANKING AT BANCO TIMAJO!!! WE ARE HAPPY TO SERVE YOU <3");
     
