@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <conio.h>
+#define PIN 1234
 
 double balance, toDeposit, toWithdraw;
 
@@ -21,10 +22,15 @@ double checkBalance(double amount) {
 }
 
 int main(){
-    int choice, pin[4], got=0;
+    int choice, pin, got=0;
 
     printf("============= WELCOME TO BANCO TIMAJO =============\n\nPlease enter PIN: \n>> ");
     scanf("%d",&pin);
+
+    while(pin != PIN) {
+        printf("INVALID PIN. Please enter again: \n>> ");
+        scanf("%d", &pin);
+    }
 
     printf("\nENTER INITIAL BALANCE \n>> P ");
     scanf("%lf", &balance);
