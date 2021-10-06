@@ -1,2 +1,2 @@
 # banking-system
-A simple banking system made in C programming language.
+A simple banking system created in C programming language.
