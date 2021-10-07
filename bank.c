@@ -9,7 +9,8 @@
 
 
 int main(){
-    int choice, pin, got=0;
+    int choice, pin;
+    char got;
     double balance, toDeposit, toWithdraw;
 
     printf("============= WELCOME TO BANCO TIMAJO =============\n\nPlease enter PIN: \n>> ");
@@ -48,13 +49,8 @@ int main(){
             system("cls");
             printf("Processing your transaction.");
             printf("\nPlease get your cash. [Press 1]\n>> ");
-            scanf("%d",&got);
+            got = getch();
 
-            while (got != 1){
-                system("cls");
-                printf("Sorry, please get your cash. [Press 1]\n>> ");
-                scanf("%d", &got);
-            }            
             system("cls");
             
             printf("***********ACCOUNT STATUS***********\n\tBALANCE: P %.2lf\n", balance);
@@ -88,5 +84,4 @@ int main(){
     system("cls");
     printf("\n============= Banking Made Easy at BANCO TIMAJO =============");
     printf("\nTHANK YOU FOR BANKING AT BANCO TIMAJO!!! WE ARE HAPPY TO SERVE YOU <3");
-    
 }
