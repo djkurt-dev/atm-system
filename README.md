@@ -1,2 +1,2 @@
-# bank-management-system
+# banking-system
 A simple banking system in C programming language.
