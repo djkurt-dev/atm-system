@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <conio.h>
-#include "banking.h"
+#include "atm.h"
 #define PIN 1234
 
 
