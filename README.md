@@ -1,2 +1,2 @@
-# banking-system
-A simple banking system in C programming language.
+# atm-system
+A simple atm system in C programming language.
