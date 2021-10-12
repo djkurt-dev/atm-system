@@ -26,6 +26,7 @@ int main(){
 
     system("cls");
 
+    menu:
     printf("\nSELECT TRANSACTION\n");
     printf("\t1. Withdraw\n\t2. Deposit\n\t3. Check balance\n\t4. Exit \n>> ");
     scanf("%d",&choice);
@@ -69,11 +70,13 @@ int main(){
         else if(choice == 3){
             system("cls");
             checkBalance(balance);
+            
         }
         
         else {
             system("cls");
-            printf("\nInvalid Input. Please try again.\n"); 
+            printf("Invalid Input. Please try again.\n"); 
+            goto menu;
         }        
 
         printf("\n============= Banking Made Easy at BANCO TIMAJO =============");
